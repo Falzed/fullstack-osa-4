@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const Blog = require('./models/blog')
 const blogsRouter = require('./controllers/blogs')
 const config = require('./utils/config')
+const usersRouter = require('./controllers/users')
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -22,6 +23,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.use('/api/blogs', blogsRouter)
+app.use('/api/users', usersRouter)
 
 const server = http.createServer(app)
 

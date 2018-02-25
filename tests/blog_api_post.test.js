@@ -1,6 +1,8 @@
 const supertest = require('supertest')
 const { app, server } = require('../index')
 const api = supertest(app)
+const { blogsInDb, usersInDb } = require('./test_helper')
+const User = require('../models/user')
 
 /* beforeAll(async () => {
   await Blog.remove({})
@@ -91,3 +93,46 @@ describe('POST:', async () => {
         server.close()
     })
 })
+
+/* describe('adding user:', async () => {
+    beforeAll(async () => {
+        await User.remove({})
+    })
+    test(
+        'trying to add a user with a password that is too short gives right status code',
+        async () => {
+            const newUser = {
+                "username": "kayttaja1",
+                "name": "tester123",
+                "password": "a",
+                "isAdult": true
+            }
+            const response =
+                await api
+                    .post('/api/users')
+                    .send(newUser)
+                    .expect(400)
+        })
+    test(
+        'trying to add a user with a duplicate username gives right status code',
+        async () => {
+            const newUser = {
+                "username": "kayttaja1",
+                "name": "tester123",
+                "password": "a",
+                "isAdult": true
+            }
+            const apu = await api
+                .post('/api/users')
+                .send(newUser)
+                .expect(201)
+            const response = await api
+                .post('/api/users')
+                .send(newUser)
+                .expect(400)
+        })
+
+    afterAll(() => {
+        server.close()
+    })
+})  */
