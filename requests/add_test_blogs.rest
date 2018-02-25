@@ -1,0 +1,31 @@
+
+
+POST http://localhost:3002/api/blogs
+Content-Type: application/json
+
+{
+    "title": "First class tests",
+    "author": "Robert C. Martin",
+    "url": "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
+    "likes": 10
+}
+
+POST http://localhost:3002/api/blogs
+Content-Type: application/json
+
+{
+    "title": "TDD harms architecture",
+    "author": "Robert C. Martin",
+    "url": "http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html",
+    "likes": 0,
+}
+
+POST http://localhost:3002/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Type wars",
+    "author": "Robert C. Martin",
+    "url": "http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
+    "likes": 2,
+}
