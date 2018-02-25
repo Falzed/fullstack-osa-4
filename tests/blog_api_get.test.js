@@ -1,6 +1,9 @@
 const supertest = require('supertest')
 const { app, server } = require('../index')
 const api = supertest(app)
+const Blog = require('../models/blog')
+
+const helper = require('./test_helper')
 
 const initialBlogs = [
   {
@@ -58,18 +61,18 @@ const initialBlogs = [
 }) */
 
 test('blogs are returned as json', async () => {
-  await api
+  const blogs = helper.blogsInDb()
+  const response = await api
     .get('/api/blogs')
     .expect(200)
     .expect('Content-Type', /application\/json/)
+
+  expect(response.body.length).toBe(blogs.length)
+  const returnedTitles = response.body.map(blog => blog.title)
+    blogs.forEach(blog => {
+      expect(returnedTitles).toContain(blog.title)
+    })
 })
-
-/* test('there are three notes', async () => {
-  const response = await api
-    .get('/api/blogs')
-
-  expect(response.body.length).toBe(3)
-}) */
 
 test('the first blog is React Patterns', async () => {
   const response = await api
