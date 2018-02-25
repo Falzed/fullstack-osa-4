@@ -1,5 +1,6 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtheXR0YWphMSIsImlkIjoiNWE5MmQ1YTFlN2I5NjczM2E4MTlmNTk1IiwiaWF0IjoxNTE5NTc0NjQyfQ.ZMkquJ5lLGLIq9uE7ab7MonycDyC75__wcNiOF5mEZM
 
 {
     "title": "testi blogi 1",

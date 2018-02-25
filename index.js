@@ -8,6 +8,8 @@ const Blog = require('./models/blog')
 const blogsRouter = require('./controllers/blogs')
 const config = require('./utils/config')
 const usersRouter = require('./controllers/users')
+const loginRouter = require('./controllers/login')
+const middleware = require('./utils/middleware')
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -22,8 +24,10 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(cors())
 
+app.use(middleware.tokenExtractor)
 app.use('/api/blogs', blogsRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 
 const server = http.createServer(app)
 
